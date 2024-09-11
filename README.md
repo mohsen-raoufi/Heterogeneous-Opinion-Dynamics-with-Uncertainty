@@ -1,2 +1,1 @@
-# uncertainty_opinion_dynamics
-Uncertainty-driven heterogeneous collective opinion dynamics, corresponding to the manuscript entitled "Leveraging Uncertainty in Collective Opinion Dynamics with Heterogeneity"
+This repository contains all the code and resources accompanying the paper titled "Leveraging Uncertainty in Collective Opinion Dynamics with Heterogeneity." The preprint of the paper is available on arXiv [here](https://arxiv.org/abs/2406.06440).
