@@ -1,1 +1,1 @@
-This repository contains all the code and resources accompanying the paper titled "Leveraging Uncertainty in Collective Opinion Dynamics with Heterogeneity." The preprint of the paper is available on arXiv [here](https://arxiv.org/abs/2406.06440).
+This repository contains all the code and resources accompanying the paper titled "Leveraging Uncertainty in Collective Opinion Dynamics with Heterogeneity." The preprint of the paper is available on arXiv [here](https://arxiv.org/abs/2402.03354).
