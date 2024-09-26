@@ -1,3 +1,5 @@
+<embed src="figures/Fig1.pdf" width="1000" type="application/pdf"/>
+
 # Leveraging Uncertainty in Collective Opinion Dynamics with Heterogeneity
 
 Code for the experiments and plots in our paper TODO ADD LINK
