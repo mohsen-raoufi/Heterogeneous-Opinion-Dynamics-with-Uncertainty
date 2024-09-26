@@ -262,7 +262,7 @@ def visualize_data_from_single_run_data(data_tuple):
 
 
 if __name__ == "__main__":
-    path = "/home/vito/ws_domip/src/collective-decison-making-with-direl/results/hpc_mount/" \
+    path = "results/hpc_mount/" \
            "N100_2023-05-02-14-58-42_test_grid_search_Bayes_centralized_random/results" \
            "/envstd_1_mnint_0_mnmin_0_np1_0_ow_0_a_n_0_run_99"
     visualize_data_from_single_run_data(get_data_single_run(path))

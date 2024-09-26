@@ -125,21 +125,20 @@ if __name__=="__main__":
                                                                        n_agents=25,
                                                                        min_agent_measurement_noise=center - 0.5 * width,
                                                                        max_agent_measurement_noise=center + 0.5 * width))
-            # path = "/home/mohsen/Project/colab/collective-decison-making-with-direl/results/test/"
-            path = "/media/vito/TOSHIBA EXT/single_runs_collectives/" + params.agent_type + "_" + str(width)
+            path = "single_runs_collectives/" + params.agent_type + "_" + str(width)
             os.makedirs(path, exist_ok=True)
             dump_config(params, os.path.join(path, "config"))
             run_experiment(params=params, file_path=path)
 
-    path_bayes_low = "/media/vito/TOSHIBA EXT/single_runs_collectives/Bayes_0.0"
-    path_bayes_middle = "/media/vito/TOSHIBA EXT/single_runs_collectives/Bayes_2.5"
-    path_bayes_high = "/media/vito/TOSHIBA EXT/single_runs_collectives/Bayes_5.0"
+    path_bayes_low = "single_runs_collectives/Bayes_0.0"
+    path_bayes_middle = "single_runs_collectives/Bayes_2.5"
+    path_bayes_high = "single_runs_collectives/Bayes_5.0"
 
-    path_ci_low = "/media/vito/TOSHIBA EXT/single_runs_collectives/BayesCI_0.0"
-    path_ci_middle = "/media/vito/TOSHIBA EXT/single_runs_collectives/BayesCI_2.5"
-    path_ci_high = "/media/vito/TOSHIBA EXT/single_runs_collectives/BayesCI_5.0"
+    path_ci_low = "single_runs_collectives/BayesCI_0.0"
+    path_ci_middle = "single_runs_collectives/BayesCI_2.5"
+    path_ci_high = "single_runs_collectives/BayesCI_5.0"
 
-    plot_dir = "/home/vito/ws_domip/src/collective-decison-making-with-direl/plots/single_runs"
+    plot_dir = "plots/single_runs"
     os.makedirs(plot_dir, exist_ok=True)
 
     data_bayes_low = get_data_single_run(path_bayes_low)

@@ -49,7 +49,7 @@ if __name__ == "__main__":
                                                                         correlation_network_information=0,
                                                                         weight_own_belief=ow,
                                                                         weight_others_belief=1-ow))
-                path = "/home/mohsen/Project/colab/collective-decison-making-with-direl/results/test_OB/"+params.agent_type+"_np_"+str(n_i)+"_ow_"+str(ow_i)
+                path = "results/"+params.agent_type+"_np_"+str(n_i)+"_ow_"+str(ow_i)
                 os.makedirs(path, exist_ok=True)
                 dump_config(params, os.path.join(path, "config"))
                 run_experiment(params=params, file_path=path)

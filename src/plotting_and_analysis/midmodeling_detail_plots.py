@@ -50,7 +50,7 @@ def make_indepdent_mismodeling_illustration():
                                                                        max_agent_measurement_noise=mcenter + mint,
                                                                        min_agent_measurement_noise=max(mcenter - mint,
                                                                                                        0.0001)))
-            path = "/media/vito/TOSHIBA EXT/mismodeling_runs/run/mcenter_" + str(mcenter) + "_pinf_" + str(mint)
+            path = "mismodeling_runs/run/mcenter_" + str(mcenter) + "_pinf_" + str(mint)
             os.makedirs(path, exist_ok=True)
             dump_config(params, os.path.join(path, "config"))
             run_experiment(params=params, file_path=path)
@@ -101,7 +101,7 @@ def make_correlated_midemodelling_illustration():
                                                                        n_agents=n_agents,
                                                                        scalar_param1=net_param,  # 0.4,
                                                                        correlation_network_information=cor))
-            path = "/media/vito/TOSHIBA EXT/mismodeling_runs/run/np_" + str(net_param) + "_cor_" + str(cor)
+            path = "mismodeling_runs/run/np_" + str(net_param) + "_cor_" + str(cor)
             os.makedirs(path, exist_ok=True)
             dump_config(params, os.path.join(path, "config"))
             run_experiment(params=params, file_path=path)
@@ -146,7 +146,7 @@ def make_correlated_midemodelling_illustration():
 
 
 if __name__=="__main__":
-    plot_dir = "/home/vito/ws_domip/src/collective-decison-making-with-direl/plots/single_runs"
+    plot_dir = "plots/single_runs"
     timesteps = 1
     dpi = 1000
 

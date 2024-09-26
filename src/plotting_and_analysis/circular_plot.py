@@ -80,7 +80,7 @@ def make_subplots(G, timesteps, centrality, uncertainty, min_uncertainty, max_un
 
 
 if __name__=="__main__":
-    plot_dir = "/home/mohsen/Project/colab/collective-decison-making-with-direl/results/test/K_reg/plots"
+    plot_dir = "results/test/K_reg/plots"
     n_agents = 26
     timesteps = 7
     params = ExperimentParameters(agent_type="BayesCircularPlot",
@@ -92,7 +92,7 @@ if __name__=="__main__":
                                                                n_agents=n_agents,
                                                                scalar_param1=6,  # 0.4,
                                                                correlation_network_information=-5.0))
-    path = "/home/mohsen/Project/colab/collective-decison-making-with-direl/results/test/K_reg"
+    path = "results/test/K_reg"
     os.makedirs(path, exist_ok=True)
     dump_config(params, os.path.join(path, "config"))
     run_experiment(params=params, file_path=path)

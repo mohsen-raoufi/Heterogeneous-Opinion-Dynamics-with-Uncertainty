@@ -375,9 +375,9 @@ def plot_for_overunderconfident_data():
 
 
 def load_and_plot_combined_data():
-    results_plots_path = os.path.join(default_plots_path, "new_new_combined")
+    results_plots_path = os.path.join(default_plots_path, "new_combined")
     os.makedirs(results_plots_path, exist_ok=True)
-    cache_path = os.path.join(default_cache_path, "new_new_combined_dataframe_cached_combined")
+    cache_path = os.path.join(default_cache_path, "new_combined_dataframe_cached_combined")
     try:
         print("Trying to find cached dataframe for combined data...")
         combined_df = load_python_object(cache_path)
@@ -387,25 +387,25 @@ def load_and_plot_combined_data():
         print("Loading Combined Data!")
         data_pathes = {
             "Bayes": os.path.join(default_result_path,
-                                  "N100_2023-09-29-23-13-06_certainty_search_Bayes_centralized_random_fixed_mdeg"),
+                                  "N100_2023-09-25-13-42-52_certainty_search_Bayes_centralized_random_fixed_mdeg"),
             "BayesCI": os.path.join(default_result_path,
-                                    "N100_2023-09-29-23-19-45_certainty_search_BayesCI_centralized_random_fixed_mdeg"),
+                                    "N100_2023-09-25-14-21-29_certainty_search_BayesCI_centralized_random_fixed_mdeg"),
             "Naive": os.path.join(default_result_path,
-                                  "N100_2023-09-29-17-07-03_certainty_search_Naive_centralized_random_fixed_mdeg"),
+                                  "N100_2023-09-15-16-19-36_certainty_search_Naive_centralized_random_fixed_mdeg"),
             "Naive (Locally Optimal Weighting)": os.path.join(default_result_path,
-                                    "N100_2023-09-29-23-27-49_certainty_search_NaiveLO_centralized_random_fixed_mdeg"),
+                                                              "N100_2023-09-25-15-09-30_certainty_search_NaiveLO_centralized_random_fixed_mdeg"),
         }
         combined_df = load_all_data(data_pathes)
         # cache python object
         dump_python_object(combined_df, cache_path)
     print("Done Loading Combined Data!")
     print(combined_df.columns)
+    # please_plot_this(combined_df)
     combined_df = rename_columns(combined_df)
     plot_combined_dataframe(combined_df, results_plots_path)
 
     print("Done Plotting for Combined Data!")
     del combined_df
-
 
 
 def plot_for_correl_combined_data():
@@ -699,9 +699,9 @@ def please_plot_this(df):
 
 
 if __name__ == "__main__":
-    default_result_path = "/home/vito/ws_domip/src/collective-decison-making-with-direl/results/hpc_mount"
-    default_plots_path = "/home/vito/ws_domip/src/collective-decison-making-with-direl/plots"
-    default_cache_path = "/media/vito/TOSHIBA EXT/cached_dfs"
+    default_result_path = "results/hpc_mount"
+    default_plots_path = "plots"
+    default_cache_path = "cached_dfs"
     show_plots = False
 
     plot_for_overunderconfident_data()

@@ -521,9 +521,9 @@ def error_error_plot(df):
     plt.show()
 
 if __name__ == "__main__":
-    default_result_path = "/home/vito/ws_domip/src/collective-decison-making-with-direl/results/hpc_mount"
-    default_plots_path = "/home/vito/ws_domip/src/collective-decison-making-with-direl/plots"
-    default_cache_path = "/media/vito/TOSHIBA EXT/cached_dfs"
+    default_result_path = "results/hpc_mount"
+    default_plots_path = "plots"
+    default_cache_path = "cached_dfs"
     show_plots = False
     results_plots_path = os.path.join(default_plots_path, "paper_plots")
     os.makedirs(results_plots_path, exist_ok=True)
