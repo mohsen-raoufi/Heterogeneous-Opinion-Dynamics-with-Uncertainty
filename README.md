@@ -2,7 +2,7 @@
 
 # Leveraging Uncertainty in Collective Opinion Dynamics with Heterogeneity
 
-Code for the experiments and plots in our paper TODO ADD LINK
+Code for the experiments and plots in [our paper](https://arxiv.org/pdf/2402.03354).
 
 ## Repository Structure
 
@@ -26,4 +26,4 @@ There you can also easily play around with some parameters of the models or scen
 To run los of experiments try out src/experiments/experiment_runner.py or to run this on an HPC cluster src/hpc_scripts/hpc_slurm.bash
 
 ## Data & Plotting
-Plotting tools can be found in plotting_and_analysis. To analyse our original data, please find the data under TODO ADD LINK
+Plotting tools can be found in plotting_and_analysis. To analyse our original data, please find the data via [this link](https://depositonce.tu-berlin.de/handle/11303/22656).
