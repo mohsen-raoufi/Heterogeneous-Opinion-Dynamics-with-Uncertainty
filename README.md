@@ -1,4 +1,4 @@
-<embed src="figures/Fig1.pdf" width="1000" type="application/pdf"/>
+<img src="figures/Fig1.png" width="1000"/>
 
 # Leveraging Uncertainty in Collective Opinion Dynamics with Heterogeneity
 
