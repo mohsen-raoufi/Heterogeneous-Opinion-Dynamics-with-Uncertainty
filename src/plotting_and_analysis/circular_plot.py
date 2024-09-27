@@ -3,7 +3,7 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
-from plotting_and_analysis.network_checks.postpro_centrality_certainty import post_pro_network_centrality_certainty
+from postPro.postpro_centrality_certainty import post_pro_network_centrality_certainty
 from util import save_and_or_show_plot
 from experiments.experiment import ExperimentParameters, run_experiment, NetworkParams
 from util import dump_config
@@ -80,7 +80,7 @@ def make_subplots(G, timesteps, centrality, uncertainty, min_uncertainty, max_un
 
 
 if __name__=="__main__":
-    plot_dir = "results/test/K_reg/plots"
+    plot_dir = "data/single_runs/K_reg/plots"
     n_agents = 26
     timesteps = 7
     params = ExperimentParameters(agent_type="BayesCircularPlot",
@@ -92,7 +92,7 @@ if __name__=="__main__":
                                                                n_agents=n_agents,
                                                                scalar_param1=6,  # 0.4,
                                                                correlation_network_information=-5.0))
-    path = "results/test/K_reg"
+    path = "data/single_runs/K_reg"
     os.makedirs(path, exist_ok=True)
     dump_config(params, os.path.join(path, "config"))
     run_experiment(params=params, file_path=path)

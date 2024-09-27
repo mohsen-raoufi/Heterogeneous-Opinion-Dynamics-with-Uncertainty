@@ -14,6 +14,7 @@ conda activate domip
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/miniconda3/lib/
 
+# ## Change this address according to your own path
 python $HOME/colab/collective-decison-making-with-direl/src/experiment_runner.py
 
 exit

@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from plotting_and_analysis.information_hetero_plot import get_relavant_data
-from plotting_and_analysis.network_checks.postpro_centrality_certainty import post_pro_network_centrality_certainty
+from plotting_and_analysis.postPro.postpro_centrality_certainty import post_pro_network_centrality_certainty
 from util import save_and_or_show_plot
 from experiments.experiment import ExperimentParameters, run_experiment, NetworkParams
 from util import dump_config

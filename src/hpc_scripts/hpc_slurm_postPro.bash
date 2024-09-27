@@ -14,7 +14,7 @@ conda activate domip
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/miniconda3/lib/
 
-# python $HOME/colab/collective-decison-making-with-direl/src/networkStudy_parallel_eigValTime.py
-python $HOME/colab/collective-decison-making-with-direl/src/networkStudy_parallel.py
+# ## Change this address according to your own path
+python $HOME/colab/collective-decison-making-with-direl/src/plotting_and_analysis/networkStudy_parallel.py
 
 exit

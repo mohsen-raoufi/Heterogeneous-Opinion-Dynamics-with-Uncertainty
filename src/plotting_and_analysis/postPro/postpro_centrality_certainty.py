@@ -3,11 +3,14 @@ import dcargs
 import numpy as np
 import pandas as pd
 import networkx as nx
-<<<<<<< HEAD
 import matplotlib as mpl
-=======
->>>>>>> e0aa1dbd6bfefdcc00da2d900e960dd883428476
 import matplotlib.pyplot as plt
+
+# add the two above directories to the path, use absolute path
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir)))
 
 from experiments.experiment import ExperimentParameters
 
@@ -56,12 +59,9 @@ def post_pro_network_centrality_certainty(file_path):
         E_p = np.mean(E_p2, axis=0)
         E_a = E_t + E_p
 
-<<<<<<< HEAD
         # just in this postprocessing, for the sake of visualization of opinions!
         zArr = zArr - z_gt
 
-=======
->>>>>>> e0aa1dbd6bfefdcc00da2d900e960dd883428476
         G = nx.from_numpy_array(adjc[0].cpu().detach().numpy())
         degreeDist = np.array(G.degree())[:, 1]
         clustCoef = np.array(list(nx.clustering(G).values()))
@@ -73,11 +73,7 @@ def post_pro_network_centrality_certainty(file_path):
         # calculate the eigenvector centrality
         G_normed_np = get_row_normalized_adj_mat_from_nx(G)
         G_normed = nx.from_numpy_array(G_normed_np)
-<<<<<<< HEAD
         centrality_0 = np.array(list(nx.eigenvector_centrality(G_normed, max_iter=10000).values()))
-=======
-        centrality_0 = np.array(list(nx.eigenvector_centrality(G_normed).values()))
->>>>>>> e0aa1dbd6bfefdcc00da2d900e960dd883428476
 
         init_central_node = np.argmax(centrality_0)
         ind_central = init_central_node # initial values
@@ -132,22 +128,14 @@ def post_pro_network_centrality_certainty(file_path):
 
             # calculate the eigenvector centrality
             G_normed_np = get_row_normalized_adj_mat_from_nx(G)
-<<<<<<< HEAD
             # G_normed_np = nx.adjacency_matrix(G).toarray()
-=======
->>>>>>> e0aa1dbd6bfefdcc00da2d900e960dd883428476
-            G_normed = nx.from_numpy_array(G_normed_np)
+            G_normed = nx.from_numpy_array(G_normed_np) # comment?
 
             centrality = np.sum(adjc_t, axis=0)
 
-<<<<<<< HEAD
             # centrality = np.array(list(nx.eigenvector_centrality(G_normed, weight='weight', max_iter=100000).values()))
             # print(centrality, flush=True)
-            centrality = centrality / np.max(centrality)
-=======
-            # centrality = np.array(list(nx.eigenvector_centrality(G_normed, weight='weight', max_iter=10000).values()))
-            # centrality = centrality / np.max(centrality)
->>>>>>> e0aa1dbd6bfefdcc00da2d900e960dd883428476
+            centrality = centrality / np.max(centrality) # comment?
 
             ind_central = np.argmax(centrality)
             ind_peripheral = np.argmin(centrality)
@@ -206,10 +194,7 @@ def post_pro_network_centrality_certainty(file_path):
 
         d = {"adjc_time" : adjc_time,
             "Timestep": [i for i in range(steps)],
-<<<<<<< HEAD
             "True_Value": [z_gt for _ in range(steps)],
-=======
->>>>>>> e0aa1dbd6bfefdcc00da2d900e960dd883428476
             "z_arr_time" : z_arr_time,
             "scalar_param1": [scalar_param1 for _ in range(steps)],
             "weight_own_belief": [weight_own_belief for _ in range(steps)],
@@ -274,7 +259,6 @@ def get_row_normalized_adj_mat_from_nx(G):
     return G2
 
 
-<<<<<<< HEAD
 def draw_network_color_nodes_on_degree(G, ax=None, edge_alpha = 0.5, edge_width = 1.5, node_size_scale = 1.0):
     # # pos = nx.spring_layout(G, seed=100)  # Seed layout for reproducibility
     # pos = nx.spring_layout(G, k=0.01, iterations=20)
@@ -375,44 +359,6 @@ def draw_network_color_nodes_on_degree(G, ax=None, edge_alpha = 0.5, edge_width 
         # nx.draw(G, pos, ax=ax, **options)
 
     ax.set_facecolor('white')
-=======
-def draw_network_color_nodes_on_degree(G, ax=None):
-    # pos = nx.spring_layout(G, seed=100)  # Seed layout for reproducibility
-    pos = nx.spring_layout(G, k=0.01, iterations=20)
-
-    # change the layout based on the node centrality + spring layout so that they don't stick together
-    # pos = nx.spectral_layout(G)
-    # pos = nx.spring_layout(G, k=0.01, iterations=2, pos=pos)
-    # 
-    # pos = nx.spiral_layout(G)
-
-    # pos = nx.shell_layout(G)
-    # pos = nx.random_layout(G)
-    # pos = nx.kamada_kawai_layout(G)
-    # pos = nx.circular_layout(G)
-    # pos = nx.fruchterman_reingold_layout(G)
-    # pos = nx.planar_layout(G)
-    # pos = nx.rescale_layout(G)
-    # pos = nx.bipartite_layout(G)
-    # pos = nx.multipartite_layout(G)
-    
-    node_color = []
-    degree_dist = np.array(G.degree())[:,1]
-    for i_node in G.nodes():
-        node_color.append((degree_dist[i_node]/degree_dist.max(),0,0))
-    options = {
-        "node_color": node_color, #"#A0CBE2",
-        "edge_color": "#6BCBFF",
-        "width": 1,
-        "edge_cmap": plt.cm.Blues,
-        "with_labels": False,
-        "node_size": 1000/G.number_of_nodes(),
-    }
-    if(ax is None):
-        nx.draw(G, pos, **options)
-    else:
-        nx.draw(G, pos, ax=ax, **options)
->>>>>>> e0aa1dbd6bfefdcc00da2d900e960dd883428476
 
 
 
