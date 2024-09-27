@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import pandas
 import seaborn as sns
 
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 from util import dump_python_object, load_python_object, save_and_or_show_plot
 import numpy as np
 import pickle

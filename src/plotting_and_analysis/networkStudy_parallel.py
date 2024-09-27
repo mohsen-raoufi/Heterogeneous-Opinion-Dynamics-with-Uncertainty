@@ -1,16 +1,24 @@
+""""
+This script is used to post process the raw data and create a pandas dataframe from it.
+If you already downloaded the processed data, you can skip this step.
+"""
 import os
 import numpy as np
 import sys
 import pickle
 import dcargs
 import pandas as pd
-
-from experiments.experiment import ExperimentParameters
 import glob
 from tqdm import tqdm
 
-path = "../../results/"
+path = "../../data/"
 sys.path.append(path)
+# add the parent and its parent directory to the path using absolute path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir)))
+
+from experiments.experiment import ExperimentParameters
+
 
 from multiprocessing import Pool
 import networkx as nx

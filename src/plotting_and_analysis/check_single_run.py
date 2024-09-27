@@ -238,7 +238,7 @@ def visualize_change_weight_mat_over_time(adjc, time_steps):
 def visualize_data_from_single_run_data(data_tuple):
     E_a, E_p, E_t, adjc, G, avgZArr, clustCoef, degreeDist, eigVal, eigVec, env_noise_std,\
         mean_agent_measurement_noise, n_agents, range_agent_measurement_noise, scalar_param1, steps,\
-        weight_own_belief, z_gt, zArr, pArr = data_tuple
+        weight_own_belief, z_gt, zArr, pArr, correlation_network_information = data_tuple
     E_t_most_central = trueness_error_wrt_to_most_central(zArr, adjc, avgZArr)
 
     visualize_weights_over_time(adjc, E_a.shape[0])
@@ -262,7 +262,5 @@ def visualize_data_from_single_run_data(data_tuple):
 
 
 if __name__ == "__main__":
-    path = "results/hpc_mount/" \
-           "N100_2023-05-02-14-58-42_test_grid_search_Bayes_centralized_random/results" \
-           "/envstd_1_mnint_0_mnmin_0_np1_0_ow_0_a_n_0_run_99"
+    path = "data/single_runs/Bayes_np_1_ow_0"
     visualize_data_from_single_run_data(get_data_single_run(path))

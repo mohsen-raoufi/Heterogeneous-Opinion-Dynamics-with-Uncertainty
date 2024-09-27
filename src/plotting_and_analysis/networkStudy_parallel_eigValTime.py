@@ -1,3 +1,9 @@
+""""
+This script is used to post process the raw data and create a pandas dataframe from it.
+If you already downloaded the processed data, you can skip this step.
+detail: it also saves the eigenvalues of the network at each time-step.
+"""
+
 import os
 import numpy as np
 import sys

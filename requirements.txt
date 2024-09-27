@@ -1,0 +1,12 @@
+dcargs
+numpy
+pandas
+networkx
+matplotlib
+torch
+pandas
+scipy
+seaborn
+palettable
+rospkg
+tqdm

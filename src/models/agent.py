@@ -1,9 +1,8 @@
 import torch
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
-from kf import update as kf_update
-from fast_covariance_intersection import fast_covariance_intersection
+from .kf import update as kf_update
+from .fast_covariance_intersection import fast_covariance_intersection
 from abc import ABC, abstractmethod
 import pandas as pd
 

@@ -521,7 +521,7 @@ def error_error_plot(df):
     plt.show()
 
 if __name__ == "__main__":
-    default_result_path = "results/hpc_mount"
+    default_result_path = "data/processed_files"
     default_plots_path = "plots"
     default_cache_path = "cached_dfs"
     show_plots = False

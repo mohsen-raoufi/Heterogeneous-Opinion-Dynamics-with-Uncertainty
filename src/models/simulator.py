@@ -1,6 +1,6 @@
-from agent import BasicBayesianAgent
-from collective import All2AllCollective
-from environment import BasicGaussianEnvironment
+from .agent import BasicBayesianAgent
+from .collective import All2AllCollective
+from .environment import BasicGaussianEnvironment
 import matplotlib.pyplot as plt
 from util import dump_python_object
 import dataclasses

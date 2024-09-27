@@ -12,6 +12,11 @@ data/
 # C extensions
 *.so
 
+# venv
+hetOpDyn_venv/
+*_venv/
+venv/
+
 # Distribution / packaging
 .Python
 build/

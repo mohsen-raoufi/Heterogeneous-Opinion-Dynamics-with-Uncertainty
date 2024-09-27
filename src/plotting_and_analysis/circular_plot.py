@@ -81,6 +81,8 @@ def make_subplots(G, timesteps, centrality, uncertainty, min_uncertainty, max_un
 
 if __name__=="__main__":
     plot_dir = "data/single_runs/K_reg/plots"
+    # make the plot_dir if it does not exist
+    os.makedirs(plot_dir, exist_ok=True)
     n_agents = 26
     timesteps = 7
     params = ExperimentParameters(agent_type="BayesCircularPlot",
