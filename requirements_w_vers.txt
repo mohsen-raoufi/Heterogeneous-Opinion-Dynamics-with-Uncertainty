@@ -21,7 +21,7 @@ networkx==3.2.1
 numpy==2.0.2
 packaging==24.1
 palettable==3.3.3
-pandas==2.2.3
+pandas==2.0.3
 pillow==10.4.0
 Pygments==2.18.0
 pyparsing==3.1.4

@@ -520,6 +520,8 @@ if __name__ == "__main__":
     default_result_path = "data/processed_files"
     default_plots_path = "plots"
     default_cache_path = "cached_dfs"
+    # create the cache path if it does not exist
+    os.makedirs(default_cache_path, exist_ok=True)
     show_plots = False
     results_plots_path = os.path.join(default_plots_path, "paper_plots")
     os.makedirs(results_plots_path, exist_ok=True)
