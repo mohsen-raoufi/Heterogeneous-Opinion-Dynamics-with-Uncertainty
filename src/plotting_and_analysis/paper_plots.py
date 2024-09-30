@@ -372,7 +372,7 @@ def correl_modelling_plot(log=False):
 def combined_modelling_plot(log=False):
     Uncorrelated_combined_df = load_overunderconfident_data()
     Uncorrelated_combined_df = rename_columns(Uncorrelated_combined_df)
-    Uncorrelated_combined_df.replace(2.5000999999999998, 2.5, inplace=True)
+    Uncorrelated_combined_df.replace(2.5000999999999998, 2.5, inplace=True)    
     Uncorrelated_combined_df = Uncorrelated_combined_df[Uncorrelated_combined_df["Timestep"] == 9]
     Uncorrelated_combined_df[
         "Difference of Interval-Center of Agent Measurement Noise Standard Deviation Parameter Distribution to True Standard Deviation"] = \
@@ -385,6 +385,9 @@ def combined_modelling_plot(log=False):
     empty_ax = all_axs[0,0]
     empty_ax.axes.get_xaxis().set_ticks([])
     empty_ax.axes.get_yaxis().set_ticks([])
+    # make the singe_runs folder in the default_plots_path if does not exist
+    if not os.path.exists(os.path.join(default_plots_path, "single_runs")):
+        os.makedirs(os.path.join(default_plots_path, "single_runs"))
     img = mpl.image.imread(os.path.join(default_plots_path,"single_runs", "mismodeling_independent.png"))
     empty_ax.imshow(img)
     empty_ax.set_xlabel("Illustration of\nmodeled initial uncertainties")
@@ -537,6 +540,6 @@ if __name__ == "__main__":
         ignore_index=True)
     het_het_precision_plot(local_df, results_plots_path)
     bar_plot(local_df)
-    # underover_plot()
-    # correl_modelling_plot()
+    underover_plot()
+    correl_modelling_plot()
     combined_modelling_plot()
