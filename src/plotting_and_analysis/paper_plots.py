@@ -140,22 +140,22 @@ def bar_plot(local_df):
     colors = ["#3781B7", "#ED6D49"]
     high_inf_het.groupby("Configuration").mean().plot.bar(ax=het_inf_ax, y=["Normalized final trueness error ${\\overline{E}^{T}_{t=T}}$  /  ${\\overline{E}^{A}_{t=0}}$", "Normalized final precision error ${\\overline{E}^{P}_{t=T}}$  /  ${\\overline{E}^{A}_{t=0}}$"],
                                                           stacked=True, legend=False, rot=rot, capsize=capsize,
-                                                          yerr=clm_multiplier*high_inf_het.groupby("Configuration").sem(), color=colors)
+                                                          yerr=clm_multiplier*high_inf_het.groupby("Configuration").sem(numeric_only=True), color=colors)
 
     het_both_ax.set_title("High information and centrality heterogeneity\n$p_\mathrm{inf}="+str(high_inf_het_val)+"$    $\sigma_\mathrm{net}="+str(np.round(both_het["Netw_std_degree"].median()))+"$")
     both_het.groupby("Configuration").mean().plot.bar(ax=het_both_ax, y=["Normalized final trueness error ${\\overline{E}^{T}_{t=T}}$  /  ${\\overline{E}^{A}_{t=0}}$", "Normalized final precision error ${\\overline{E}^{P}_{t=T}}$  /  ${\\overline{E}^{A}_{t=0}}$"],
                                                       stacked=True, legend=False, rot=rot, capsize=capsize,
-                                                      yerr=clm_multiplier*both_het.groupby("Configuration").sem(), color=colors)
+                                                      yerr=clm_multiplier*both_het.groupby("Configuration").sem(numeric_only=True), color=colors)
 
     homo_ax.set_title("Information and centrality homogeneity\n$p_\mathrm{inf}="+str(no_inf_het_val)+"$    $\sigma_\mathrm{net}="+str(np.round(no_het["Netw_std_degree"].median()))+"$")
     no_het.groupby("Configuration").mean().plot.bar(ax=homo_ax, y=["Normalized final trueness error ${\\overline{E}^{T}_{t=T}}$  /  ${\\overline{E}^{A}_{t=0}}$", "Normalized final precision error ${\\overline{E}^{P}_{t=T}}$  /  ${\\overline{E}^{A}_{t=0}}$"],
                                                     stacked=True, legend=False, rot=rot, capsize=capsize,
-                                                    yerr=clm_multiplier*no_het.groupby("Configuration").sem(), color=colors)
+                                                    yerr=clm_multiplier*no_het.groupby("Configuration").sem(numeric_only=True), color=colors)
 
     het_cent_ax.set_title("High centrality heterogeneity\n$p_\mathrm{inf}="+str(no_inf_het_val)+"$    $\sigma_\mathrm{net}="+str(np.round(high_net_het["Netw_std_degree"].median()))+"$")
     high_net_het.groupby("Configuration").mean().plot.bar(ax=het_cent_ax, y=["Normalized final trueness error ${\\overline{E}^{T}_{t=T}}$  /  ${\\overline{E}^{A}_{t=0}}$", "Normalized final precision error ${\\overline{E}^{P}_{t=T}}$  /  ${\\overline{E}^{A}_{t=0}}$"],
                                                           stacked=True, legend=False, rot=rot, capsize=capsize,
-                                                          yerr=clm_multiplier*high_net_het.groupby("Configuration").sem(), color=colors)
+                                                          yerr=clm_multiplier*high_net_het.groupby("Configuration").sem(numeric_only=True), color=colors)
 
     axs[1, 0].yaxis.grid(True)
     axs[1, 1].yaxis.grid(True)
