@@ -1,4 +1,5 @@
-from algorithm_comparison_plots import set_share_axes, plot_heatmap_for_columns, get_limits, filter_for_optimal_weights_in_naive
+from algorithm_comparison_plots import set_share_axes, plot_heatmap_for_columns, get_limits, \
+    filter_for_optimal_weights_in_naive, load_combined_data, load_overunderconfident_data, load_correl_data
 from util import dump_python_object, load_python_object, save_and_or_show_plot
 import pandas
 import matplotlib.pyplot as plt
@@ -245,8 +246,7 @@ def correl_heatmap_plot(dataframe, ax, mapped_value, x_col, y_col, fixed_param_s
 
 
 def underover_plot(log=False):
-    cache_path = os.path.join(default_cache_path, "combined_dataframe_cached_with_underoverconfident")
-    combined_df = load_python_object(cache_path)
+    combined_df = load_overunderconfident_data()
     combined_df = rename_columns(combined_df)
     combined_df.replace(2.5000999999999998, 2.5, inplace=True)
     combined_df = combined_df[combined_df["Timestep"] == 9]
@@ -310,8 +310,7 @@ def underover_plot(log=False):
 
 
 def correl_modelling_plot(log=False):
-    cache_path = os.path.join(default_cache_path, "correl_combined_dataframe_cached_combined")
-    combined_df = load_python_object(cache_path)
+    combined_df = load_correl_data()
     combined_df = rename_columns(combined_df)
     combined_df = combined_df[combined_df["Timestep"] == 9]
     mapping = combined_df[["Netw_std_degree", "Centrality Homogeneity"]].groupby("Centrality Homogeneity").mean()
@@ -371,8 +370,7 @@ def correl_modelling_plot(log=False):
 
 
 def combined_modelling_plot(log=False):
-    cache_path = os.path.join(default_cache_path, "combined_dataframe_cached_with_underoverconfident")
-    Uncorrelated_combined_df = load_python_object(cache_path)
+    Uncorrelated_combined_df = load_overunderconfident_data()
     Uncorrelated_combined_df = rename_columns(Uncorrelated_combined_df)
     Uncorrelated_combined_df.replace(2.5000999999999998, 2.5, inplace=True)
     Uncorrelated_combined_df = Uncorrelated_combined_df[Uncorrelated_combined_df["Timestep"] == 9]
@@ -401,9 +399,7 @@ def combined_modelling_plot(log=False):
     empty_ax.set_title("Centrality-correlated errors", rotation='vertical', x=-.18, y=-0.05)
     empty_ax.set(adjustable='box', aspect='equal')
 
-
-    cache_path = os.path.join(default_cache_path, "correl_combined_dataframe_cached_combined")
-    correlated_combined_df = load_python_object(cache_path)
+    correlated_combined_df = load_correl_data()
     correlated_combined_df = rename_columns(correlated_combined_df)
     correlated_combined_df = correlated_combined_df[correlated_combined_df["Timestep"] == 9]
     print(correlated_combined_df["Netw_std_degree"].max())
@@ -527,8 +523,7 @@ if __name__ == "__main__":
     show_plots = False
     results_plots_path = os.path.join(default_plots_path, "paper_plots")
     os.makedirs(results_plots_path, exist_ok=True)
-    cache_path = os.path.join(default_cache_path, "new_combined_dataframe_cached_combined")
-    combined_df = load_python_object(cache_path)
+    combined_df = load_combined_data()
     combined_df = rename_columns(combined_df)
     only_optimal_weights_df = filter_for_optimal_weights_in_naive(combined_df, ["Centrality Homogeneity",
                                                                                 "Interval-Width of Agent Measurement Noise Standard Deviation Parameter Distribution",])
@@ -540,6 +535,6 @@ if __name__ == "__main__":
         ignore_index=True)
     het_het_precision_plot(local_df, results_plots_path)
     bar_plot(local_df)
-    underover_plot()
-    correl_modelling_plot()
+    # underover_plot()
+    # correl_modelling_plot()
     combined_modelling_plot()

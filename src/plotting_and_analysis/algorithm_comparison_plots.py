@@ -18,6 +18,9 @@ from palettable.matplotlib import Viridis_3, Plasma_20, Inferno_20
 
 
 default_cmap = Viridis_3.get_mpl_colormap()
+default_result_path = "data/processed_files"
+default_plots_path = "plots"
+default_cache_path = "cached_dfs"
 
 def get_colorMaps(nIds):
     CMap = default_cmap
@@ -262,23 +265,7 @@ def plot_for_overunderconfident_data():
     global default_cmap
     results_plots_path = os.path.join(default_plots_path, "underoverconfident")
     os.makedirs(results_plots_path, exist_ok=True)
-    cache_path = os.path.join(default_cache_path, "combined_dataframe_cached_with_underoverconfident")
-    try:
-        print("Trying to find cached dataframe for Under/OverConfident data...")
-        combined_df = load_python_object(cache_path)
-        print("Using Cached Dataframe!")
-    except Exception:
-        print("Did not find cached dataframe.")
-        print("Loading Under/OverConfident Data!")
-        data_pathes = {
-            "Bayes": os.path.join(default_result_path,
-                                  "N100_2023-09-25-16-01-39_overunderconfident_search_Bayes_centralized_random_fixed_mdeg"),
-            "BayesCI": os.path.join(default_result_path,
-                                    "N100_2023-09-25-16-24-36_overunderconfident_search_BayesCI_centralized_random_fixed_mdeg"),
-        }
-        combined_df = load_all_data(data_pathes)
-        # cache python object
-        dump_python_object(combined_df, cache_path)
+    combined_df = load_overunderconfident_data()
     print("Done Loading Under/OverConfident Data!")
     combined_df = combined_df.rename(columns={
         "Trueness_Error": "Trueness Error",
@@ -376,9 +363,42 @@ def plot_for_overunderconfident_data():
     del combined_df
 
 
+def load_overunderconfident_data():
+    cache_path = os.path.join(default_cache_path, "combined_dataframe_cached_with_underoverconfident")
+    try:
+        print("Trying to find cached dataframe for Under/OverConfident data...")
+        combined_df = load_python_object(cache_path)
+        print("Using Cached Dataframe!")
+    except Exception:
+        print("Did not find cached dataframe.")
+        print("Loading Under/OverConfident Data!")
+        data_pathes = {
+            "Bayes": os.path.join(default_result_path,
+                                  "N100_2023-09-25-16-01-39_overunderconfident_search_Bayes_centralized_random_fixed_mdeg"),
+            "BayesCI": os.path.join(default_result_path,
+                                    "N100_2023-09-25-16-24-36_overunderconfident_search_BayesCI_centralized_random_fixed_mdeg"),
+        }
+        combined_df = load_all_data(data_pathes)
+        # cache python object
+        dump_python_object(combined_df, cache_path)
+    return combined_df
+
+
 def load_and_plot_combined_data():
     results_plots_path = os.path.join(default_plots_path, "new_combined")
     os.makedirs(results_plots_path, exist_ok=True)
+    combined_df = load_combined_data()
+    print("Done Loading Combined Data!")
+    print(combined_df.columns)
+    # please_plot_this(combined_df)
+    combined_df = rename_columns(combined_df)
+    plot_combined_dataframe(combined_df, results_plots_path)
+
+    print("Done Plotting for Combined Data!")
+    del combined_df
+
+
+def load_combined_data():
     cache_path = os.path.join(default_cache_path, "new_combined_dataframe_cached_combined")
     try:
         print("Trying to find cached dataframe for combined data...")
@@ -400,38 +420,13 @@ def load_and_plot_combined_data():
         combined_df = load_all_data(data_pathes)
         # cache python object
         dump_python_object(combined_df, cache_path)
-    print("Done Loading Combined Data!")
-    print(combined_df.columns)
-    # please_plot_this(combined_df)
-    combined_df = rename_columns(combined_df)
-    plot_combined_dataframe(combined_df, results_plots_path)
-
-    print("Done Plotting for Combined Data!")
-    del combined_df
+    return combined_df
 
 
 def plot_for_correl_combined_data():
     results_plots_path = os.path.join(default_plots_path, "correl_meas_combined")
     os.makedirs(results_plots_path, exist_ok=True)
-    cache_path = os.path.join(default_cache_path, "correl_meas_combined_dataframe_cached_combined")
-    try:
-        print("Trying to find cached dataframe for correl meas data...")
-        combined_df = load_python_object(cache_path)
-        print("Using Cached Dataframe!")
-    except Exception:
-        print("Did not find cached dataframe.")
-        print("Loading Combined Data!")
-        data_pathes = {
-            "Bayes": os.path.join(default_result_path,
-                                  "N100_2023-10-24-17-27-59_corelationWithMeas_search_Bayes_centralized_random_fixed_mdeg"),
-            "BayesCI": os.path.join(default_result_path,
-                                    "N100_2023-10-24-17-43-19_corelationWithMeas_search_BayesCI_centralized_random_fixed_mdeg"),
-            "Naive": os.path.join(default_result_path,
-                                  "N100_2023-10-24-14-20-26_corelationWithMeas_search_Naive_centralized_random_fixed_mdeg"),
-        }
-        combined_df = load_all_data(data_pathes)
-        # cache python object
-        dump_python_object(combined_df, cache_path)
+    combined_df = load_correl_data()
     print("Done Loading correl Data!")
     print(combined_df.columns)
     # please_plot_this(combined_df)
@@ -527,6 +522,30 @@ def plot_for_correl_combined_data():
 
     print("Done Plotting for correl Data!")
     del combined_df
+
+
+def load_correl_data():
+    cache_path = os.path.join(default_cache_path, "correl_meas_combined_dataframe_cached_combined")
+    try:
+        print("Trying to find cached dataframe for correl meas data...")
+        combined_df = load_python_object(cache_path)
+        print("Using Cached Dataframe!")
+    except Exception:
+        print("Did not find cached dataframe.")
+        print("Loading Combined Data!")
+        data_pathes = {
+            "Bayes": os.path.join(default_result_path,
+                                  "N100_2023-10-24-17-27-59_corelationWithMeas_search_Bayes_centralized_random_fixed_mdeg"),
+            "BayesCI": os.path.join(default_result_path,
+                                    "N100_2023-10-24-17-43-19_corelationWithMeas_search_BayesCI_centralized_random_fixed_mdeg"),
+            "Naive": os.path.join(default_result_path,
+                                  "N100_2023-10-24-14-20-26_corelationWithMeas_search_Naive_centralized_random_fixed_mdeg"),
+        }
+        combined_df = load_all_data(data_pathes)
+        # cache python object
+        dump_python_object(combined_df, cache_path)
+    return combined_df
+
 
 def plot_combined_dataframe(combined_df, results_plots_path):
     only_optimal_weights_df = filter_for_optimal_weights_in_naive(combined_df, ["Centrality Homogeneity",
