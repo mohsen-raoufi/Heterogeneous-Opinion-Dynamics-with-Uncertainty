@@ -402,11 +402,8 @@ def combined_modelling_plot(log=False):
     correlated_combined_df = load_correl_data()
     correlated_combined_df = rename_columns(correlated_combined_df)
     correlated_combined_df = correlated_combined_df[correlated_combined_df["Timestep"] == 9]
-    print(correlated_combined_df["Netw_std_degree"].max())
     mapping = correlated_combined_df[["Netw_std_degree", "Centrality Homogeneity"]].groupby("Centrality Homogeneity").mean()
-    print(mapping)
     correlated_combined_df["HetCent"] = [mapping.values[mapping.index == i][0][0] for i in correlated_combined_df["Centrality Homogeneity"]]
-    print(correlated_combined_df["HetCent"].max())
 
     error_max1, error_min1 = get_limits(correlated_combined_df[correlated_combined_df["Configuration"] == "Bayes"],
                                         col1="HetCent",

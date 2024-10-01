@@ -525,7 +525,7 @@ def plot_for_correl_combined_data():
 
 
 def load_correl_data():
-    cache_path = os.path.join(default_cache_path, "correl_meas_combined_dataframe_cached_combined")
+    cache_path = os.path.join(default_cache_path, "correl_combined_dataframe_cached_combined")
     try:
         print("Trying to find cached dataframe for correl meas data...")
         combined_df = load_python_object(cache_path)
@@ -535,11 +535,13 @@ def load_correl_data():
         print("Loading Combined Data!")
         data_pathes = {
             "Bayes": os.path.join(default_result_path,
-                                  "N100_2023-10-24-17-27-59_corelationWithMeas_search_Bayes_centralized_random_fixed_mdeg"),
+                                  "N100_2023-09-30-01-13-40_correlation_search_Bayes_centralized_random_fixed_mdeg"),
             "BayesCI": os.path.join(default_result_path,
-                                    "N100_2023-10-24-17-43-19_corelationWithMeas_search_BayesCI_centralized_random_fixed_mdeg"),
+                                    "N100_2023-09-30-01-18-18_correlation_search_BayesCI_centralized_random_fixed_mdeg"),
             "Naive": os.path.join(default_result_path,
-                                  "N100_2023-10-24-14-20-26_corelationWithMeas_search_Naive_centralized_random_fixed_mdeg"),
+                                  "N100_2023-09-29-23-36-25_correlation_search_Naive_centralized_random_fixed_mdeg"),
+            "Naive (Locally Optimal Weighting)": os.path.join(default_result_path,
+                                                              "N100_2023-09-30-01-22-49_correlation_search_NaiveLO_centralized_random_fixed_mdeg"),
         }
         combined_df = load_all_data(data_pathes)
         # cache python object
